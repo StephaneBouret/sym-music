@@ -8,7 +8,7 @@
 		<div class="card card-fill">
 			<div class="card-body">
 				<div class="my-8 mx-auto" style="width: 480px;">
-					<h1 class="text-center mb-4 fs-4">Se connecter à l'application elearning</h1>
+					<h1 class="text-center mb-4 fs-4">Se connecter à l'application sym-music</h1>
 					<form method="post">
 						{% if error %}
 							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -45,14 +45,17 @@
 							</div>
 						</div>
 					</form>
-					{# <div class="text-center mt-4">
-						<span class="text-muted">
+					<div class="d-flex flex-column text-center mt-4">
+						<span class="text-muted">Pas encore inscrit(e) ?
+							<a href="#">M'inscrire</a>
+						</span>
+						{# <span class="text-muted">
 							Vous avez oublié votre mot de passe&nbsp;?
 							<u>
 								<a href="{{ path('security_forgotPw') }}" class="text-decoration-none">Le réinitialiser</a>
 							</u>
-						</span>
-					</div> #}
+						</span> #}
+					</div>
 				</div>
 			</div>
 		</div>
