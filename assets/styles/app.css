@@ -1,3 +1,255 @@
+@font-face {
+    font-family: AirbnbCereal;
+    font-weight: normal;
+    font-style: normal;
+    src: url(../fonts/AirbnbCereal_W_Lt.otf);
+    font-display: swap;
+}
+
 body {
     background-color: skyblue;
+    font-family: AirbnbCereal, Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+}
+
+.jyoYKi {
+    min-height: 570px;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+.navbar {
+    align-items: center !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    padding-bottom: .5rem !important;
+    padding-top: .5rem !important;
+    position: relative !important;
+}
+
+.container-fluid {
+    max-width: 1440px;
+}
+
+.container-fluid {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+}
+
+@media (min-width: 576px) {
+    .container-fluid {
+        padding-right: 32px !important;
+        padding-left: 32px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .container-fluid {
+        padding-right: 48px !important;
+        padding-left: 48px !important;
+    }
+}
+
+.btn-connect {
+    background-color: #325d88 !important;
+    border-color: #325d88 !important;
+}
+
+.btn-connect:hover {
+    color: #FFF !important;
+    background-color: #2b4f74 !important;
+    border-color: transparent !important;
+}
+
+.dropdown-user {
+    font-size: 13px;
+    letter-spacing: 0em;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: rgb(26, 38, 45) !important;
+    outline: none;
+    font-weight: 600 !important;
+    text-decoration: none;
+    border-radius: 8px !important;
+    padding: 4px 8px !important;
+}
+
+.dropdown-user:hover,
+.dropdown-user:focus,
+.dropdown-user:active {
+    color: rgb(26, 38, 45) !important;
+    background-color: rgb(237, 239, 240) !important;
+    text-decoration: none;
+}
+
+.space-between {
+    height: 0px;
+    border-top: 1px solid rgb(213, 215, 217);
+}
+
+.color-btn-logout {
+    color: rgba(26, 38, 45, 0.6) !important;
+}
+
+.color-btn-logout:hover,
+.color-btn-logout:focus,
+.color-btn-logout:active {
+    color: rgb(26, 38, 45) !important;
+    background-color: rgb(237, 239, 240) !important;
+    text-decoration: none;
+}
+
+.btn-dropdown-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    padding: 0px;
+}
+
+.sc-img-gravatar {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center center;
+    object-position: center center;
+    margin: 0px auto;
+    border-radius: 0px;
+    aspect-ratio: unset;
+    width: 100%;
+}
+
+.sc-gravatar .sc-img-gravatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 99999;
+    background: #3460ce;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: all 0.4s;
+}
+
+.back-to-top i {
+    font-size: 24px;
+    color: #fff;
+    line-height: 0;
+}
+
+.back-to-top:hover {
+    background: #6776f4;
+    color: #fff;
+    -webkit-text-decoration-line: none;
+    text-decoration-line: none;
+}
+
+.back-to-top.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Login page
+--------------------------------------------------------------*/
+.card-fill {
+    background-color: #fff !important;
+    background-clip: border-box !important;
+    border: 1px solid #d5d7d9 !important;
+    border-radius: 0.5rem !important;
+    flex: 1 1 auto !important;
+}
+
+.card-fill .card-body {
+    display: flex;
+    align-items: center;
+    padding: 20px !important;
+}
+
+@media (min-width: 576px) {
+    .card-fill .card-body {
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+        padding-left: 28px !important;
+        padding-right: 28px !important;
+    }
+}
+
+.my-8 {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+}
+
+.lh-label {
+    line-height: 1.35rem;
+}
+
+.form-control-login {
+    height: calc(1.75em + 0.875rem + 2px) !important;
+    padding: 0.4375rem 1rem !important;
+    line-height: 1.75 !important;
+    color: #0d161b !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #d5d7d9 !important;
+    border-radius: 0.5rem !important;
+}
+
+.form-control-login::-webkit-input-placeholder {
+    color: #9ea2a4 !important;
+}
+
+.form-control-login::-moz-placeholder {
+    color: #9ea2a4 !important;
+}
+
+.form-control-login:-ms-input-placeholder {
+    color: #9ea2a4 !important;
+}
+
+.form-control-login::-ms-input-placeholder {
+    color: #9ea2a4 !important;
+}
+
+.form-control-login::placeholder {
+    color: #9ea2a4 !important;
+}
+
+.form-control-login:focus {
+    color: #0d161b !important;
+    background-color: #fff !important;
+    border-color: #0d161b !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.1875rem #d5d7d9 !important;
+}
+
+form:invalid button.btn-dark[type=submit],
+.btn-dark:disabled {
+    color: #fff;
+    background-color: #0d161b;
+    border-color: #0d161b;
+    opacity: 0.4;
+}
+
+.text-muted a {
+    color: #53595c !important;
 }
