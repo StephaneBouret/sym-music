@@ -253,3 +253,31 @@ form:invalid button.btn-dark[type=submit],
 .text-muted a {
     color: #53595c !important;
 }
+
+/*--------------------------------------------------------------
+# Registration page
+--------------------------------------------------------------*/
+.text-very-weak {
+    color: #842029;
+    font-weight: 600;
+}
+
+.text-weak {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.text-medium {
+    color: #fd7e14;
+    font-weight: 600;
+}
+
+.text-strong {
+    color: #20c997;
+    font-weight: 600;
+}
+
+.text-very-strong {
+    color: #198754;
+    font-weight: 600;
+}
