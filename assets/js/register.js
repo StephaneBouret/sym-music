@@ -9,16 +9,67 @@ let phone = false;
 let rgpd = false;
 let pass = false;
 
+// Fonction pour initialiser la validation des champs
+function initializeValidation() {
+    // Liste des champs et des fonctions de validation
+    const fields = [
+        { id: "#registration_form_firstname", handler: checkFirstname },
+        { id: "#registration_form_lastname", handler: checkLastname },
+        { id: "#registration_form_email", handler: checkEmail },
+        { id: "#registration_form_adress", handler: checkAdress },
+        { id: "#registration_form_postalCode", handler: checkPostalCode },
+        { id: "#registration_form_phone", handler: checkPhone },
+        { id: "#registration_form_city", handler: checkCity },
+        { id: "#registration_form_agreeTerms", handler: checkRgpd },
+        { id: "#registration_form_plainPassword", handler: checkPass },
+    ];
+
+    fields.forEach(field => {
+        const element = document.querySelector(field.id);
+        if (element) {
+            element.removeEventListener("input", field.handler); // Empêcher les doublons
+            element.addEventListener("input", field.handler);
+        }
+    });
+
+    // Validation initiale
+    checkAll();
+}
+
+// Observer les changements du DOM
+document.addEventListener("DOMContentLoaded", () => {
+    initializeValidation(); // Initialisation lors du chargement de la page
+
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === "childList") {
+                // Si le formulaire est ajouté ou mis à jour
+                const form = document.querySelector("#registration_form");
+                if (form && mutation.target.contains(form)) {
+                    console.log("Formulaire détecté ou mis à jour");
+                    initializeValidation();
+                }
+            }
+        });
+    });
+
+    // Observer les modifications du DOM
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true, // Observer tous les nœuds enfants
+    });
+});
+
 // On charge les éléments du formulaire
-document.querySelector("#registration_form_firstname").addEventListener("input", checkFirstname);
-document.querySelector("#registration_form_lastname").addEventListener("input", checkLastname);
-document.querySelector("#registration_form_email").addEventListener("input", checkEmail);
-document.querySelector("#registration_form_adress").addEventListener("input", checkAdress);
-document.querySelector("#registration_form_postalCode").addEventListener("input", checkPostalCode);
-document.querySelector("#registration_form_phone").addEventListener("input", checkPhone);
-document.querySelector("#registration_form_city").addEventListener("input", checkCity);
-document.querySelector("#registration_form_agreeTerms").addEventListener("input", checkRgpd);
-document.querySelector("#registration_form_plainPassword").addEventListener("input", checkPass);
+// document.querySelector("#registration_form_firstname").addEventListener("input", checkFirstname);
+// document.querySelector("#registration_form_lastname").addEventListener("input", checkLastname);
+// document.querySelector("#registration_form_email").addEventListener("input", checkEmail);
+// document.querySelector("#registration_form_adress").addEventListener("input", checkAdress);
+// document.querySelector("#registration_form_postalCode").addEventListener("input", checkPostalCode);
+// document.querySelector("#registration_form_phone").addEventListener("input", checkPhone);
+// document.querySelector("#registration_form_city").addEventListener("input", checkCity);
+// document.querySelector("#registration_form_agreeTerms").addEventListener("input", checkRgpd);
+// document.querySelector("#registration_form_plainPassword").addEventListener("input", checkPass);
 
 function checkFirstname() {
     firstname = this.value.length > 2;
@@ -68,7 +119,7 @@ function checkRgpd() {
 
 function checkAll() {
     document.querySelector("#submit-button").setAttribute("disabled", "disabled");
-    if (email && firstname && lastname && adress && postalCode && city && phone && pass && rgpd) {
+    if (email && firstname && lastname && adress && postalCode && city && phone && pass && rgpd) {    
         document.querySelector("#submit-button").removeAttribute("disabled");
     }
 }
