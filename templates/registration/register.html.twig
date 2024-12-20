@@ -14,7 +14,7 @@
 					<h1 class="text-center mb-4 fs-4">S'inscrire à l'application</h1>
 					{{ form_errors(registrationForm) }}
 
-					{{ form_start(registrationForm, {'attr': {'data-turbo': 'false'}}) }}
+					{{ form_start(registrationForm) }}
 					<div class="row">
 						<div class="col-md-6">
 							{{ form_row(registrationForm.email, {'attr': {'class': 'form-control-login'}}) }}

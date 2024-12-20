@@ -4,20 +4,14 @@ namespace App\Form;
 
 use App\Entity\User;
 use libphonenumber\PhoneNumberFormat;
+use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Misd\PhoneNumberBundle\Form\Type\PhoneNumberType;
-use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Validator\Constraints\PasswordStrength;
 
-class RegistrationFormType extends AbstractType
+class UpdateUserFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -30,45 +24,6 @@ class RegistrationFormType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'placeholder' => 'Merci de saisir votre adresse email'
-                ],
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez accepter les conditions d\utilisation',
-                    ]),
-                ],
-            ])
-            ->add('plainPassword', PasswordType::class, [
-                // instead of being set onto the object directly,
-                // this is read and encoded in the controller
-                'toggle' => true,
-                'hidden_label' => 'Masquer',
-                'visible_label' => 'Afficher',
-                'label' => 'Votre mot de passe :',
-                'label_attr' => [
-                    'class' => 'lh-label fw-medium'
-                ],
-                'mapped' => false,
-                'attr' => [
-                    'autocomplete' => 'new-password',
-                    'placeholder' => '••••••••'
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Merci de renseigner un mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit avoir au minimum {{ limit }} caractères',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                    new PasswordStrength(
-                        minScore: PasswordStrength::STRENGTH_STRONG,
-                        message: 'Le mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.'
-                    )
                 ],
             ])
             ->add('firstname', TextType::class, [

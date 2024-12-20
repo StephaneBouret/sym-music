@@ -23,13 +23,16 @@ class ResetPasswordFormType extends AbstractType
                     'autocomplete' => 'new-password',
                     'placeholder' => 'Merci de saisir votre mot de passe'
                 ],
-                // 'constraints' => [
-                //     new PasswordStrength(
-                //         minScore: PasswordStrength::STRENGTH_STRONG,
-                //         message: 'Le mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.'
-                //     )
-                // ],
+                'constraints' => [
+                    new PasswordStrength(
+                        minScore: PasswordStrength::STRENGTH_STRONG,
+                        message: 'Le mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.'
+                    )
+                ],
                 'first_options' => [
+                    'toggle' => true,
+                    'hidden_label' => 'Masquer',
+                    'visible_label' => 'Afficher',
                     'label' => 'Votre mot de passe :',
                     'label_attr' => [
                         'class' => 'lh-label fw-bold form-label'
