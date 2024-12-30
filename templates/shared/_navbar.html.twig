@@ -7,8 +7,8 @@
 		<div class="collapse navbar-collapse" id="navbarColor03">
 			<ul class="navbar-nav me-auto">
 				<li class="nav-item">
-					<a href="#" class="nav-link">
-						📚 Programmes
+					<a href="{{ path('app_program') }}" class="nav-link">
+						📚 Programmation
 					</a>
 				</li>
 				<li class="nav-item">
@@ -24,11 +24,11 @@
 			</ul>
 			<ul class="navbar-nav">
 				{% if app.user %}
-					{# {% if is_granted('ROLE_ADMIN') %}
+					{% if is_granted('ROLE_ADMIN') %}
 						<li class="nav-item">
 							<a href="{{ path('admin') }}" class="nav-link">Administration</a>
 						</li>
-					{% endif %} #}
+					{% endif %}
 					<div class="btn-group">
 						<button class="dropdown-toggle btn-dropdown-user" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 							<div
