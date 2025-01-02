@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Artist;
 use App\Entity\Genre;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -32,7 +33,8 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Genres', 'fa-fw fas fa-section', Genre::class);
+        yield MenuItem::linkToCrud('Genres', 'fa-solid fa-music', Genre::class);
+        yield MenuItem::linkToCrud('Artistes', 'fa-solid fa-guitar', Artist::class);
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'app_home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
