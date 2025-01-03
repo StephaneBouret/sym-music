@@ -1,0 +1,87 @@
+<div>
+	<div class="c4mnd7m atm_9s_11p5wf0 atm_dz_1osqo2v">
+		<div class="c1l1h97y">
+			<div
+				class="cy5jw6o">
+				{# <a href="{{ path('ads_show', {'slug': ad.slug}) }}" class="stnw88a"></a> #}
+				<div class="lxq01kf">
+					<div class="m1v28t5c">
+						<div class="c14dgvke">
+							<div class="c1e9noat atm_9s_11p5wf0 atm_dx_1orwtfw">
+								<div class="s1yvqyx7">
+									<div class="d1l1iq8f">
+										{% if not artist.imageName is empty %}
+											<img src="{{ vich_uploader_asset(artist) }}" alt="{{ artist.name }}" class="idpfg47">
+										{% else %}
+											<img src="{{ asset('build/img/default-img.jpg') }}" class="idpfg47" alt="Default Image">
+										{% endif %}
+									</div>
+									{# <a href="{{ path('ads_show', {'slug': ad.slug}) }}" class="s47hgt8">
+																											</a> #}
+								</div>
+							</div>
+						</div>
+					</div>
+					{# <div class="g1qv1ctd atm_e0_1lo05zz">
+																<div class="t1jojoys">
+																	{{ ad.type }}
+																	.
+																	{{ ad.city }}
+																</div>
+																<div class="fb4nyux">
+																	<span class="t6mzqp7">
+																		{{ ad.content|raw|nl2br|striptags|u.truncate(50, '...') }}
+																	</span>
+																</div>
+																<div class="fb4nyux">
+																	<span class="t6mzqp7">
+																		Hôte :
+																		{% if ad.author.firstname is defined and ad.author.firstname != null %}
+																			{{ ad.author.firstname }}
+																		{% else %}
+																			...
+																		{% endif %}
+																	</span>
+																</div>
+																<div class="pquyp1l">
+																	<div class="_i5duul">
+																		<span class="_14y1gc">
+																			<span class="_1jo4hgw">
+																				<span class="_1y74zjx">
+																					{{ ad.price | amount }}
+																				</span>
+																				<span class="_1w7bwz8">&nbsp;par nuit</span>
+																			</span>
+																		</span>
+																	</div>
+																</div>
+																<div class="t1a9j9y7">
+																	<span class="r4a59j5">
+																		<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; height: 12px; width: 12px; fill: currentcolor;">
+																			<path fill-rule="evenodd" d="m15.1 1.58-4.13 8.88-9.86 1.27a1 1 0 0 0-.54 1.74l7.3 6.57-1.97 9.85a1 1 0 0 0 1.48 1.06l8.62-5 8.63 5a1 1 0 0 0 1.48-1.06l-1.97-9.85 7.3-6.57a1 1 0 0 0-.55-1.73l-9.86-1.28-4.12-8.88a1 1 0 0 0-1.82 0z"></path>
+																		</svg>
+																		{% if comments|length > 0 %}
+																		<span class="ru0q88m">{{ ad.avgRatings|number_format(2, '.', ',') }} ({{ comments|length }})</span>
+																		{% else %}
+																			Nouveau
+																		{% endif %}
+																	</span>
+																</div>
+															</div> #}
+				</div>
+				<div class="fb4nyux">
+					<span class="t6mzqp7">
+						{% if artist.name is defined and artist.name != null %}
+							{{ artist.name|upper }}
+						{% else %}
+							...
+						{% endif %}
+					</span>
+					<span class="r87loi5">
+					{{ artist.programDateAt|format_datetime('short', 'none', locale: 'fr') }}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
