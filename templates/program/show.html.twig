@@ -1,41 +1,56 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Programmation de {{ artist.name }}
+{% block title %}Programmation de
+	{{ artist.name }}
 {% endblock %}
 
 {% block body %}
-<div class="custom-container-main">
-    <main id="site-content">
-        <div class="f12t1m0s">
-            <h1 class="text-center">Programmation</h1>
-            <div class="container pt-5">
-                <div class="pp5axk">
-                    <div class="a7re76">
-                        <div class="d1l1iq8f">
-                            {% if not artist.imageName is empty %}
-                            <img src="{{ vich_uploader_asset(artist) }}" alt="{{ artist.name }}" class="idpfg47 jzoutu">
-                            {% else %}
-                            <img src="{{ asset('build/img/default-img.jpg') }}" class="idpfg47 jzoutu" alt="Default Image">
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="sibihh">
-                    <div class="erqbbn">
-                    <h3 class="sex59f">{{ artist.name|upper }}</h3>
-                    <div class="isdr9p">{{ artist.genre }}</div>
-                    <div class="fn4g7z">
-                    <div class="ag7k35">{{ artist.programDateAt|format_datetime('short', 'none', locale: 'fr') }}</div>
-                    <div class="aegpyl">Scène : à venir</div>
-                    <div class="hj6w7z">
-                    {{ artist.description|raw|nl2br|striptags }}
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-</div>
-</div>
-{% endblock %}
+	<div class="custom-container-main">
+		<main id="site-content">
+			<div class="f12t1m0s">
+				<h1 class="text-center">Programmation</h1>
+				<div class="container pt-5">
+					<div>
+						<a href="{{ path('app_program') }}" class="pcb3o4">Retour à la liste</a>
+					</div>
+					<div class="pp5axk">
+						<div class="a7re76">
+							<div class="d1l1iq8f">
+								{% if not artist.imageName is empty %}
+									<img src="{{ vich_uploader_asset(artist) }}" alt="{{ artist.name }}" class="idpfg47 jzoutu">
+								{% else %}
+									<img src="{{ asset('build/img/default-img.jpg') }}" class="idpfg47 jzoutu" alt="Default Image">
+								{% endif %}
+							</div>
+						</div>
+						<div class="sibihh">
+							<div class="erqbbn">
+								<h3 class="sex59f">{{ artist.name|upper }}</h3>
+								<div class="isdr9p">{{ artist.genre }}</div>
+								<div class="fn4g7z">
+									<div class="ag7k35">{{ artist.programDateAt|format_datetime('short', 'none', locale: 'fr') }}</div>
+									<div class="aegpyl">Scène : à venir</div>
+									<div class="hj6w7z">
+										{{ artist.description|raw|nl2br|striptags }}
+									</div>
+									<div class="nct4jq">
+										{% for link in artist.links %}
+											<a href="{{ link.url }}">
+												<div class="r57cz5">
+													<img src="{{ vich_uploader_asset(link) }}" alt="{{ link.svgFilename }}">
+												</div>
+											</a>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{# <div class="x4zthd">
+					                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/D88TXghKHBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="qs08ql"></iframe>
+					                    </div> #}
+				</div>
+			</div>
+		</main>
+	</div>
+</div>{% endblock %}

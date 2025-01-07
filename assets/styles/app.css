@@ -1057,6 +1057,69 @@ form:invalid button.btn-dark[type=submit],
     border-radius: 10px;
 }
 
+.pcb3o4 {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: rgb(36, 20, 41);
+    color: #FFFFFF;
+    border-color: rgb(36, 20, 41);
+    border-width: 1px;
+    border-style: solid;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 10px;
+    height: 3em;
+    line-height: 3em;
+    font-size: 18px;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+
+.nct4jq {
+    margin-top: 40px;
+    display: flex;
+    flex-flow: wrap;
+}
+
+.r57cz5 {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(36, 20, 41);
+    border-color: rgb(36, 20, 41);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+.r57cz5 * {
+    height: 20px;
+}
+
+.x4zthd {
+    padding-top: 56.25%;
+    position: relative;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.qs08ql {
+    position: absolute;
+    inset: 0px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 /*--------------------------------------------------------------
 # Root
 --------------------------------------------------------------*/

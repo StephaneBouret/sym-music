@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Artist;
 use App\Entity\Genre;
+use App\Form\LinkFormType;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -14,7 +15,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArtistCrudController extends AbstractCrudController
@@ -64,6 +67,17 @@ class ArtistCrudController extends AbstractCrudController
             ->onlyOnForms()
             ->setFormType(VichImageType::class)
             ->setFormTypeOptions(['delete_label' => 'Supprimer l\'image']),
+            CollectionField::new('links', 'Réseaux sociaux')
+            ->setFormTypeOptions([
+                'entry_type' => LinkFormType::class,
+                'entry_options' => [
+                    'label' => false,
+                ],
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+            ])
+            ->onlyOnForms(),
         ];
     }
 }
