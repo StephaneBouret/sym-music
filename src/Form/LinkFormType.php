@@ -2,9 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Artist;
 use App\Entity\Link;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
@@ -33,14 +31,19 @@ class LinkFormType extends AbstractType
             ])
             ->add('svgFile', VichFileType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Fichier svg',
                 'delete_label' => 'Supprimer le svg',
                 'download_uri' => false,
                 'attr' => [
                     'class' => 'form-control mb-2'
                 ],
             ])
-        ;
+            ->add('svgFilename', null, [
+                'label' => 'Nom du fichier SVG :',
+                'disabled' => true,
+                'required' => false,
+            ])
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

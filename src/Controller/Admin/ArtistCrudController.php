@@ -40,13 +40,6 @@ class ArtistCrudController extends AbstractCrudController
             ->setPaginatorPageSize(10);
     }
 
-    public function configureActions(Actions $actions): Actions
-    {
-        $actions = parent::configureActions($actions);
-        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
-        return $actions;
-    }
-
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -68,16 +61,9 @@ class ArtistCrudController extends AbstractCrudController
             ->setFormType(VichImageType::class)
             ->setFormTypeOptions(['delete_label' => 'Supprimer l\'image']),
             CollectionField::new('links', 'Réseaux sociaux')
-            ->setFormTypeOptions([
-                'entry_type' => LinkFormType::class,
-                'entry_options' => [
-                    'label' => false,
-                ],
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ])
-            ->onlyOnForms(),
+            ->setEntryType(LinkFormType::class)
+            ->setFormTypeOption('by_reference', false)
+            ->hideOnIndex(),
         ];
     }
 }
