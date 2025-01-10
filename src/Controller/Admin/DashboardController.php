@@ -3,7 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Artist;
+use App\Entity\Category;
 use App\Entity\Genre;
+use App\Entity\Ticket;
+use App\Entity\User;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -35,6 +38,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Genres', 'fa-solid fa-music', Genre::class);
         yield MenuItem::linkToCrud('Artistes', 'fa-solid fa-guitar', Artist::class);
+        yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Category::class);
+        yield MenuItem::linkToCrud('Billets', 'fa-solid fa-ticket', Ticket::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'app_home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }

@@ -1093,9 +1093,7 @@ form:invalid button.btn-dark[type=submit],
     margin-right: 10px;
     margin-bottom: 10px;
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
-    -webkit-box-pack: center;
     justify-content: center;
     position: relative;
 }
@@ -1118,6 +1116,54 @@ form:invalid button.btn-dark[type=submit],
     inset: 0px;
     border-radius: 10px;
     overflow: hidden;
+}
+
+/*--------------------------------------------------------------
+# Tickets index
+--------------------------------------------------------------*/
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    min-height: auto;
+}
+
+.qc7n4 {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.udr94d {
+    position: absolute;
+    margin: auto;
+    top: -20%;
+    right: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #000000;
+    overflow: hidden;
+}
+
+.zsx8jc {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #FFFFFF;
+}
+
+.m1drx3 {
+    height: 96px;
+}
+
+@media (min-width: 1128px) {
+    .atm_10yczz8_egatvm__qky54c {
+        --breakpoint-grid_columns: 3;
+    }
 }
 
 /*--------------------------------------------------------------

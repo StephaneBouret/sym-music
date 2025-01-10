@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Billeterie
+{% endblock %}
+
+{% block body %}
+	<div class="container pt-5">
+		<h1 class="text-center">Billeterie</h1>
+		<div class="row">
+			<div class="atm_dl_1mvrszh atm_10yczz8_kb7nvz atm_1d13e1y_p5ox87 atm_yrukzc_1od0ugv atm_9s_11p5wf0 atm_d7_1ymvx20 atm_d5_j5tqy atm_dz_hxz02 atm_10yczz8_cs5v99__1ldigyt atm_10yczz8_11wpgbn__1v156lz atm_10yczz8_qfx8er__1xolj55 atm_10yczz8_ouytup__w5e62l atm_10yczz8_egatvm__qky54c">
+				{% for pass in passes %}
+					{% include "partials/_ticket_card.html.twig" %}
+				{% endfor %}
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="atm_dl_1mvrszh atm_10yczz8_kb7nvz atm_1d13e1y_p5ox87 atm_yrukzc_1od0ugv atm_9s_11p5wf0 atm_d7_1ymvx20 atm_d5_j5tqy atm_dz_hxz02 atm_10yczz8_cs5v99__1ldigyt atm_10yczz8_11wpgbn__1v156lz atm_10yczz8_qfx8er__1xolj55 atm_10yczz8_ouytup__w5e62l atm_10yczz8_egatvm__qky54c">
+				{% for ticket in tickets %}
+					{% include "partials/_ticket_card.html.twig" with {'pass': ticket} %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

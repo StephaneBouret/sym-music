@@ -44,6 +44,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column]
     private ?string $password = null;
 
+    private ?string $plainPassword = null;
+
     #[ORM\Column(length: 255)]
     #[Assert\Length(
         min: 3,
@@ -92,6 +94,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $createdTokenAt = null;
+
+    public function __toString()
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
 
     public function getId(): ?int
     {
@@ -155,6 +162,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
@@ -298,5 +317,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function setEmailAuthCode(string $authCode): void
     {
         $this->authCode = $authCode;
+    }
+
+        /**
+     * Retourne le nom complet de l'utilisateur
+     *
+     * @return string
+     */
+    public function getFullname(): string
+    {
+        return "{$this->firstname} {$this->lastname}";
     }
 }
