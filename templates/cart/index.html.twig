@@ -18,7 +18,13 @@
 			<tbody>
 				{% for item in items %}
 					<tr>
-						<td>{{ item.ticket.name}}</td>
+						<td>{{ item.ticket.category}}
+							{{ item.ticket.name }}
+							{% if item.ticket.category == 'Pass' %}
+								jours
+							{% endif %}
+							<small>{{ item.days | join('-') }}</small>
+						</td>
 						<td>{{ item.ticket.price | amount }}</td>
 						<td>{{ item.qty}}</td>
 						<td>{{ (item.qty * item.ticket.price) | amount }}</td>

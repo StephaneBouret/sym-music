@@ -53,9 +53,15 @@ class CartController extends AbstractController
         // [1 => ['ticket' => '...'], 'quantity' => qté]
         foreach ($session->get('cart', []) as $id => $qty) {
             $ticket = $ticketRepository->find($id);
+            $content = $ticket->getContent();
+            $days = strip_tags($content, '<br>');
+            $daysArray = preg_split('/<br\s*\/?>/i', $days);
+            $daysArray = array_map('trim', $daysArray);
+
             $detailedCart[] = [
                 'ticket' => $ticket,
-                'qty' => $qty
+                'qty' => $qty,
+                'days' => $daysArray
             ];
 
             $total += $ticket->getPrice() * $qty;
