@@ -31,9 +31,8 @@
 					{% endif %}
 					<div class="btn-group">
 						<button class="dropdown-toggle btn-dropdown-user" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-							<div
-								class="sc-gravatar">
-									Paramètres
+							<div class="sc-gravatar">
+								Paramètres
 							</div>
 						</button>
 						<ul class="dropdown-menu dropdown-menu-lg-end py-0">
@@ -51,6 +50,12 @@
 						<a href="{{ path('app_login') }}" class="btn btn-primary btn-connect">Se connecter</a>
 					</li>
 				{% endif %}
+				<li class="nav-item">
+					<a href="{{ path('app_cart_show') }}" class="nav-link">
+						<i class="fas fa-shopping-cart"></i>
+						Panier
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
