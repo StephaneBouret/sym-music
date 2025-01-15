@@ -13,6 +13,7 @@
 					<th>Prix</th>
 					<th>Quantité</th>
 					<th>Total</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,15 +27,28 @@
 							<small>{{ item.days | join('-') }}</small>
 						</td>
 						<td>{{ item.ticket.price | amount }}</td>
-						<td>{{ item.qty}}</td>
-						<td>{{ (item.qty * item.ticket.price) | amount }}</td>
+						<td>
+							<a href="{{ path('app_cart_decrement', {'id': item.ticket.id})}}" class="btn btn-sm btn-primary">
+								<i class="fas fa-minus"></i>
+							</a>
+							{{ item.qty}}
+							<a href="{{ path('app_cart', {'id': item.ticket.id})}}?returnToCart=true"" class="btn btn-sm btn-primary">
+								<i class="fas fa-plus"></i>
+							</a>
+						</td>
+						<td>{{ item.total | amount }}</td>
+						<td>
+							<a href="{{ path('app_cart_delete', {'id': item.ticket.id})}}" class="btn btn-sm btn-danger">
+								<i class="fas fa-trash"></i>
+							</a>
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 			<tfoot>
 				<tr>
 					<td colspan="3">Total :</td>
-					<td>{{ total | amount }}</td>
+					<td colspan="2">{{ total | amount }}</td>
 				</tr>
 			</tfoot>
 		</table>
