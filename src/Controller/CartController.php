@@ -11,16 +11,19 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class CartController extends AbstractController
 {
+    public function __construct(protected TicketRepository $ticketRepository, protected CartService $cartService)
+    {}
+
     #[Route('/cart/add/{id}', name: 'app_cart', requirements: ['id' => '\d+'])]
-    public function add($id, Request $request, TicketRepository $ticketRepository, CartService $cartService): Response
+    public function add($id, Request $request): Response
     {
         // 0. Sécurisation : est-ce que le billet existe
-        $ticket = $ticketRepository->find($id);
+        $ticket = $this->ticketRepository->find($id);
         if (!$ticket) {
             throw $this->createNotFoundException("Le billet $id n'existe pas");
         }
 
-        $cartService->add($id);
+        $this->cartService->add($id);
 
         $this->addFlash('success', "Le billet a bien été ajouté au panier");
 
@@ -33,10 +36,10 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart', name: 'app_cart_show')]
-    public function show(CartService $cartService): Response
+    public function show(): Response
     {
-        $total = $cartService->getTotal();
-        $detailedCart = $cartService->getDetailedCartItems();
+        $total = $this->cartService->getTotal();
+        $detailedCart = $this->cartService->getDetailedCartItems();
 
         return $this->render('cart/index.html.twig', [
             'items' => $detailedCart,
@@ -45,14 +48,14 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/delete/{id}', name: 'app_cart_delete', requirements: ['id' => '\d+'])]
-    public function delete($id, TicketRepository $ticketRepository, CartService $cartService): Response
+    public function delete($id): Response
     {
-        $ticket = $ticketRepository->find($id);
+        $ticket = $this->ticketRepository->find($id);
         if (!$ticket) {
             throw $this->createNotFoundException("Le billet $id n'existe pas et ne peut pas être supprimé !");
         }
 
-        $cartService->remove($id);
+        $this->cartService->remove($id);
 
         $this->addFlash('success', "Le billet a bien été supprimé du panier");
 
@@ -61,14 +64,14 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/decrement/{id}', name: 'app_cart_decrement', requirements: ['id' => '\d+'])]
-    public function decrement($id, CartService $cartService, TicketRepository $ticketRepository): Response
+    public function decrement($id): Response
     {
-        $ticket = $ticketRepository->find($id);
+        $ticket = $this->ticketRepository->find($id);
         if (!$ticket) {
             throw $this->createNotFoundException("Le billet $id n'existe pas et ne peut pas être supprimé !");
         }
 
-        $cartService->decrement($id);
+        $this->cartService->decrement($id);
 
         $this->addFlash('success', "Le billet a bien été décrémenté");
 
