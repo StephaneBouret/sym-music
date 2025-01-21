@@ -29,6 +29,9 @@
 							<a href="{{ path('admin') }}" class="nav-link">Administration</a>
 						</li>
 					{% endif %}
+					<li class="nav-item">
+					<a href="{{ path('app_purchase_list') }}" class="nav-link">Mes commandes</a>
+					</li>
 					<div class="btn-group">
 						<button class="dropdown-toggle btn-dropdown-user" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
 							<div class="sc-gravatar">
@@ -52,8 +55,10 @@
 				{% endif %}
 				<li class="nav-item">
 					<a href="{{ path('app_cart_show') }}" class="nav-link">
+					{% if cartService.total > 0 %}					
 						<i class="fas fa-shopping-cart"></i>
 						Panier ({{ cartService.total | amount }})
+					{% endif %}
 					</a>
 				</li>
 			</ul>

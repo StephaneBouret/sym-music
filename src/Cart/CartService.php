@@ -2,6 +2,7 @@
 
 namespace App\Cart;
 
+use App\Cart\CartItem;
 use App\Repository\TicketRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -68,6 +69,11 @@ class CartService
         
     }
 
+    public function empty()
+    {
+        $this->saveCart([]);
+    }
+
     public function getTotal(): int
     {
         $total = 0;
@@ -85,6 +91,9 @@ class CartService
         return $total;
     }
 
+    /**
+     * @return CartItem[]
+     */
     public function getDetailedCartItems(): array
     {       
         $detailedCart = [];

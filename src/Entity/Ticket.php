@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TicketRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 #[ORM\Entity(repositoryClass: TicketRepository::class)]
 #[Vich\Uploadable]
@@ -69,6 +70,22 @@ class Ticket
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    /**
+     * @var Collection<int, PurchaseItem>
+     */
+    #[ORM\OneToMany(targetEntity: PurchaseItem::class, mappedBy: 'ticket')]
+    private Collection $purchaseItems;
+
+    public function __construct()
+    {
+        $this->purchaseItems = new ArrayCollection();
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->category . ' ' . $this->name;
+    }
 
     public function getId(): ?int
     {
@@ -192,5 +209,35 @@ class Ticket
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    /**
+     * @return Collection<int, PurchaseItem>
+     */
+    public function getPurchaseItems(): Collection
+    {
+        return $this->purchaseItems;
+    }
+
+    public function addPurchaseItem(PurchaseItem $purchaseItem): static
+    {
+        if (!$this->purchaseItems->contains($purchaseItem)) {
+            $this->purchaseItems->add($purchaseItem);
+            $purchaseItem->setTicket($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchaseItem(PurchaseItem $purchaseItem): static
+    {
+        if ($this->purchaseItems->removeElement($purchaseItem)) {
+            // set the owning side to null (unless already changed)
+            if ($purchaseItem->getTicket() === $this) {
+                $purchaseItem->setTicket(null);
+            }
+        }
+
+        return $this;
     }
 }
