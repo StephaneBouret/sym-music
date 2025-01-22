@@ -1,0 +1,10 @@
+{% for item in field.value %}
+    <div>
+        <strong>Nom :</strong> {{ item.ticketName }}<br>
+        <strong>Prix :</strong> {{ item.ticketPrice | amount }}<br>
+        <strong>Quantité :</strong> {{ item.quantity }}
+    </div>
+    <hr>
+{% else %}
+    <div>Aucun article pour cette commande.</div>
+{% endfor %}

@@ -10,8 +10,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\BooleanFilter;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -29,7 +31,7 @@ class PurchaseCrudController extends AbstractCrudController
             ->setPageTitle('index', 'Commandes :')
             ->setPageTitle('detail', fn(Purchase $purchase) => (string) $purchase->getId())
             ->setEntityLabelInSingular('une commande')
-            ->setDefaultSort(['id' => 'ASC'])
+            ->setDefaultSort(['id' => 'DESC'])
             ->setPaginatorPageSize(10);
     }
 
@@ -48,13 +50,31 @@ class PurchaseCrudController extends AbstractCrudController
             AssociationField::new('user', 'Utilisateur'),
             MoneyField::new('total', 'Total de la commande')->setCurrency('EUR'),
             DateTimeField::new('purchasedAt', 'Date de la commande :'),
-            TextField::new('status', 'Statut de la commande :'),
+            TextField::new('status', 'Statut de la commande :')
+                ->formatValue(function ($value) {
+                    if ($value === Purchase::STATUS_PAID) {
+                        return '<span class="badge text-bg-success">Payée</span>';
+                    }
+                    if ($value === Purchase::STATUS_PENDING) {
+                        return '<span class="badge text-bg-warning">En attente</span>';
+                    }
+                    return $value;
+                })
+            ->renderAsHtml(),
+            CollectionField::new('purchaseItems', 'Billets :')
+            ->onlyOnDetail()
+            ->allowAdd(false)
+            ->setTemplatePath('admin/fields/purchase_items.html.twig'),
         ];
     }
 
-    // public function configureFilters(Filters $filters): Filters
-    // {
-    //     return parent::configureFilters($filters)
-    //     ->add(BooleanFilter::new('status'));
-    // }
+    public function configureFilters(Filters $filters): Filters
+    {
+        return parent::configureFilters($filters)
+            ->add(BooleanFilter::new('status')
+            ->setFormTypeOption('choices', [
+                'En attente' => Purchase::STATUS_PENDING,
+                'Payée' => Purchase::STATUS_PAID,
+            ]));
+    }
 }

@@ -87,6 +87,17 @@ class Ticket
         return $this->category . ' ' . $this->name;
     }
 
+    public function getFullNameWithDays(array $days): string
+    {
+        $formattedDays = array_map(function ($day) {
+            return ucfirst(strtolower($day));
+        }, $days);
+    
+        $daysString = implode(', ', $formattedDays);
+    
+        return $this->getFullName() . ' (' . $daysString . ')';
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -176,7 +187,7 @@ class Ticket
         return $this;
     }
 
-        /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter

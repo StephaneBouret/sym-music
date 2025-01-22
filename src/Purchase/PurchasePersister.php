@@ -22,9 +22,11 @@ class PurchasePersister
         // 7. Nous allons la lier avec les billets qui sont dans le panier
         foreach ($this->cartService->getDetailedCartItems() as $cartItem) {
             $purchaseItem = new PurchaseItem;
+            $days = $cartItem->getDays();
+            $ticketNameWithDays = $cartItem->ticket->getFullNameWithDays($days);
             $purchaseItem->setPurchase($purchase)
                 ->setTicket($cartItem->ticket)
-                ->setTicketName($cartItem->ticket->getFullName())
+                ->setTicketName($ticketNameWithDays)
                 ->setTicketPrice($cartItem->ticket->getPrice())
                 ->setQuantity($cartItem->qty)
                 ->setTotal($cartItem->getTotal());

@@ -1,0 +1,31 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block main %}
+	<h1>Tableau de bord</h1>
+	<div class="row">
+		<div class="col-12">
+			<div class="card info-card sales-card">
+				<div class="card-body">
+					<h5 class="card-title">Total cumulé des commandes :</h5>
+					<div class="d-flex align-items-center">
+						<div class="card-icon rounded-circle d-flex align-items-center justify-content-center" style="
+								    font-size: 32px;
+								    line-height: 0;
+								    width: 64px;
+								    height: 64px;
+								    flex-shrink: 0;
+								    flex-grow: 0;
+								    color: #4154f1;
+								    background: #f6f6fe;
+								">
+							<i class="fa-solid fa-cart-shopping"></i>
+						</div>
+						<div class="ps-3">
+							<h6 class="display-4">{{ totalCumulative | amount }}</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
