@@ -12,10 +12,12 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class ProfileController extends AbstractController
 {
     #[Route('/profile', name: 'app_profile')]
+    #[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page')]
     public function index(Request $request, EntityManagerInterface $em): Response
     {
         /** @var User $user */

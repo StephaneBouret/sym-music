@@ -11,13 +11,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PurchaseListController extends AbstractController
 {
     #[Route('/purchases', name: 'app_purchase_list')]
-    #[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à vos commandes')]
+    #[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page')]
     public function index(): Response
     {
         // 1. Nous devons nous assurer que la personne est connectée sinon redirection vers la page de connexion
         // 2. Nous voulons savoir qui est connecté
         /** @var User */
         $user = $this->getUser();
+        $this->denyAccessUnlessGranted('CAN_EDIT', $user, 'Vous n\'avez pas confimé votre email');
 
         // 3. Nous voulons passer l'utilisateur à TWIG afin d'afficher ses commandes
         return $this->render('purchase/index.html.twig', [
