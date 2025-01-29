@@ -1,0 +1,29 @@
+<h1>Bravo pour votre commande n°{{ purchase.id }}</h1>
+
+<p>Merci à vous {{ user.firstname }} {{ user.lastname }} !</p>
+
+<table>
+    <thead>
+        <th>Billet</th>
+        <th>Quantité</th>
+        <th>Prix unitaire</th>
+        <th>Total</th>
+    </thead>
+    <tbody>
+        {% for item in purchase.purchaseItems %}
+        <td>{{ item.ticketName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.ticketPrice | amount }} </td>
+        <td>{{ item.total | amount }}</td>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+    <td colspan="3">Total :</td>
+    <td>{{ purchase.total | amount }}</td>
+    </tr>
+    </tfoot>
+</table>
+
+<h4>La commande sera adressée à :</h4>
+<p>{{ purchase.fullName }}</p>
