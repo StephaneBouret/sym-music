@@ -1118,6 +1118,94 @@ form:invalid button.btn-dark[type=submit],
 }
 
 /*--------------------------------------------------------------
+# Search
+--------------------------------------------------------------*/
+.ut26uw {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center
+}
+
+@media (min-width: 696px) {
+    .ut26uw {
+        flex-direction: row;
+        margin-top: 6rem;
+    }
+}
+
+#programDateAt {
+    display: flex;
+    gap: 10px;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 786px) {
+    #programDateAt {
+        justify-content: space-between;
+        /* gap: 10px; */
+    }
+}
+
+#programDateAt .form-check {
+    margin-right: 5px;
+    margin-bottom: 10px;
+    background-color: rgb(252, 234, 203);
+    padding-left: 15px;
+    padding-right: 15px;
+    border-color: rgb(36, 20, 41);
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 3em;
+    line-height: 3em;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#programDateAt .form-check input[type="radio"] {
+    display: none;
+}
+
+#programDateAt .form-check label {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.q7n7wn {
+    width: 100%;
+}
+
+@media (min-width: 696px) {
+    .q7n7wn {
+        width: 30%;
+    }
+}
+
+.js-filter-courses-pagination .page-link {
+    color: #212529;
+}
+
+.js-filter-courses-pagination .page-link:hover {
+    color: #000000;
+}
+
+.js-filter-courses-pagination .page-link:focus {
+    color: #212529;
+}
+
+.js-filter-courses-pagination .active>.page-link, .page-link.active {
+    background-color: #212529;
+    border-color: #212529;
+}
+
+/*--------------------------------------------------------------
 # Tickets index
 --------------------------------------------------------------*/
 .card-grid {

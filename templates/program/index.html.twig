@@ -8,12 +8,20 @@
 		<main id="site-content">
 			<div class="f12t1m0s">
 				<h1 class="text-center">Programmation</h1>
+				<div>
+					{% include "partials/_filter.html.twig" %}
+				</div>
 				<div class="atm_dl_1mvrszh atm_10yczz8_kb7nvz atm_1d13e1y_p5ox87 atm_yrukzc_1od0ugv atm_9s_11p5wf0 atm_d7_1ymvx20 atm_d5_j5tqy atm_dz_hxz02 atm_10yczz8_cs5v99__1ldigyt atm_10yczz8_11wpgbn__1v156lz atm_10yczz8_egatvm__qky54b atm_10yczz8_qfx8er__1xolj55 atm_10yczz8_ouytup__w5e62l">
 					{% for artist in artists %}
 						{% include "program/_program.html.twig" %}
 					{% endfor %}
 				</div>
+				<div class="d-flex flex-row mt-3">
+					<div class="col-md-9 px-1 js-filter-courses-pagination">
+						{% include "partials/_pagination.html.twig" %}
+					</div>
+				</div>
 			</div>
 		</main>
 	</div>
-</div>{% endblock %}
+{% endblock %}
