@@ -2,6 +2,7 @@ import './bootstrap.js';
 import {
     Application
 } from "@hotwired/stimulus";
+import Filter from './js/modules/Filter.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -56,6 +57,7 @@ const closeAlertMessage = () => {
 const initPage = () => {
     closeAlertMessage();
     backToTop();
+    new Filter(document.querySelector('.js-filter'));
 }
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

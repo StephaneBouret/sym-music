@@ -43,6 +43,7 @@ class SearchFormType extends AbstractType
                 'choice_label' => function (\DateTimeImmutable $date) use ($formatter) {
                     return mb_strtoupper($formatter->format($date));
                 },
+                'choice_value' => fn (?\DateTimeImmutable $date) => $date ? $date->format('Y-m-d') : '',
                 'choice_attr' => fn (\DateTimeImmutable $date) => [
                     'class' => 'date-choice'
                 ],

@@ -69,7 +69,7 @@ class ArtistRepository extends ServiceEntityRepository
                 ->setParameter('date', $date);
         }
 
-        return $query;
+        return $query->orderBy('a.programDateAt', 'ASC');
     }
 
     //    /**
