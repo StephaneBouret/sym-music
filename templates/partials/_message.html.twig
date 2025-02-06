@@ -1,0 +1,13 @@
+{% for message in messages %}
+	{% set type = message.type %}
+	{% if type == 'Important' %}
+		{% set label = 'warning' %}
+	{% else %}
+		{% set label = 'danger' %}
+	{% endif %}
+	<div class="message-alert alert-{{ label }}" role="alert">
+		<div class="alert-message">
+			{{ message.content | raw }}
+		</div>
+	</div>
+{% endfor %}

@@ -72,6 +72,17 @@ class ArtistRepository extends ServiceEntityRepository
         return $query->orderBy('a.programDateAt', 'ASC');
     }
 
+    public function findNextTwoProgramDates()
+    {
+        return $this->createQueryBuilder('a')
+                ->where('a.programDateAt >= :currentDate')
+                ->setParameter('currentDate', new \DateTimeImmutable())
+                ->orderBy('a.programDateAt', 'ASC')
+                ->setMaxResults(2)
+                ->getQuery()
+                ->getResult();
+    }
+
     //    /**
     //     * @return Artist[] Returns an array of Artist objects
     //     */

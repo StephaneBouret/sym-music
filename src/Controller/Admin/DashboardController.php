@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Artist;
 use App\Entity\Category;
 use App\Entity\Genre;
+use App\Entity\Message;
 use App\Entity\Purchase;
 use App\Entity\Ticket;
 use App\Entity\User;
@@ -56,6 +57,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Billets', 'fa-solid fa-ticket', Ticket::class);
         yield MenuItem::linkToCrud('Commandes', 'fa-solid fa-cart-shopping', Purchase::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Messages', 'fa-solid fa-message', Message::class);
         yield MenuItem::linkToRoute('Retour au site', 'fas fa-home', 'app_home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
