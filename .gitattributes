@@ -1,0 +1,52 @@
+# ---------------------------------------------------------
+# Normalisation globale des fins de ligne
+# ---------------------------------------------------------
+* text=auto eol=lf
+
+# ---------------------------------------------------------
+# Fichiers binaires (ne jamais normaliser)
+# ---------------------------------------------------------
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
+*.webp binary
+*.ico binary
+
+*.pdf binary
+*.zip binary
+
+# Polices
+*.ttf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+
+# ---------------------------------------------------------
+# Symfony : fichiers générés, cache, logs
+# ---------------------------------------------------------
+var/cache/** -text
+var/log/** -text
+
+# ---------------------------------------------------------
+# Composer
+# ---------------------------------------------------------
+composer.lock text eol=lf
+
+# Ne jamais normaliser vendor (au cas où)
+vendor/** -text
+
+# ---------------------------------------------------------
+# Config
+# ---------------------------------------------------------
+*.yaml text eol=lf
+*.yml text eol=lf
+*.xml text eol=lf
+*.json text eol=lf
+*.env text eol=lf
+
+# ---------------------------------------------------------
+# PHP (forcer LF pour homogénéité)
+# ---------------------------------------------------------
+*.php text eol=lf
